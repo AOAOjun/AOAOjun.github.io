@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0">
+		<title>原神辅助专区</title>
+		<style>
+			*{
+															            margin: 0;
+															            padding: 0;
+															            box-sizing: border-box;
+															            
+															        }
+															        body{
+															            height: 200vh;
+															            
+															        }
+															        .tou{
+															             position: fixed;
+															             top: 0;
+															             left: 0;
+															             padding: 25px 100px;
+															             width: 100%;
+															             display: flex;
+															             justify-content: space-between;
+															             align-items: center;
+															            transition:  0.5s;
+															         }
+															        .logo{
+															             position: relative;
+															             font-size: 22px;
+															             font-weight: 900;
+															             letter-spacing: 2px;
+															             color: rgb(28, 36, 148);
+															         }
+															         .logo::before{
+															            content: '';
+															            position: absolute;
+															            left: -60px;
+															            top: -11.3px;
+															            width: 50px;
+															            height: 50px;
+															            background-image: url(img/logo.jpg);
+															            background-size: 100%;
+															         }
+															         .biao{
+															             position: relative;
+															             display: flex;
+															             justify-content: center;
+															             align-content: center;
+															            list-style: none;
+															            
+															         }
+															        .biao li{
+															             position: relative;
+															         }
+															        .biao a{
+															             position: relative;
+															             margin: 0 10px;
+															             font-size: 18px;
+															             font-family: 'fangsong';
+															             font-weight: bold;
+															             color: rgb(28, 36, 148);
+															             text-decoration: none;
+															
+															         }
+															          
+															        .bian{
+															            padding: 15px 100px;
+															            background-color: rgb(71, 105, 219);
+															        }
+																	.bian .logo,.tou.bian a{
+																				color: rgb(252, 247, 247);
+																			}
+																		/*  背景图样式 */
+																	.bjimg {
+																		position: fixed;
+																		top: 0;
+																		left: 0;
+																		width: 100%;
+																		height: 100%;
+																		min-width: 1000px;
+																		z-index: -10;
+																		zoom: 1;
+																		background-color: #fff;
+																		background-image: url(img/bg.jpg) ;
+																		background-repeat: no-repeat;
+																		background-size: cover;
+																		-webkit-background-size: cover;
+																		-o-background-size: cover;
+																		background-position: center 0;
+																	}
+																	/* 清除浏览器默认边距，
+									使边框和内边距的值包含在元素的height和width内 */
+									* {
+									    margin: 0;
+									    padding: 0;
+									    box-sizing: border-box;
+									}
+									/* flex布局，让内容垂直和水平居中 */
+									body {
+									   display: flex;
+									   justify-content: center;
+									   align-items: center;
+									   min-height: 100vh;
+									   background: #000;
+									}
+									/* flex布局，让内容垂直和水平居中，超过的部分换行显示 */
+									.container {
+									    display: flex;
+									    justify-content: center;
+									    align-items: center;
+									    flex-wrap: wrap;
+									}
+									/* 按钮的基本样式 */
+									.container a {
+									    position: relative;
+									    padding: 15px 30px;
+									    margin: 50px;
+									    border: 2px solid #0f0;
+									    font-size: 18px;
+									    font-weight: 600;
+									    text-decoration: none;
+									    letter-spacing: 5px;
+									    color: #fff;
+									    filter: hue-rotate(calc(var(--x) * 60deg));
+									    transition: 0.5s;
+									}
+									/* 鼠标经过时改变按钮样式 */
+									.container a:hover {
+									    transition-delay: 1.5s;
+									    color: #000;
+									    box-shadow: 0 0 10px #0f0,
+									                0 0 20px #0f0,
+									                0 0 40px #0f0,
+									                0 0 80px #0f0,
+									                0 0 160px #0f0,
+									                0 0 320px #0f0;
+									}
+									a span {
+									    position: relative;
+									    z-index: 10;
+									}
+									/* 通过伪元素::before实现按钮左边的线 */
+									.container a::before {
+									    content: "";
+									    position: absolute;
+									    left: -20px;
+									    top: 50%;
+									    transform: translateY(-50%);
+									    background: #0f0;
+									    width: 20px;
+									    height: 2px;
+									    box-shadow: 5px -8px 0 #0f0,
+									                5px 8px 0 #0f0;
+									    transition: width 0.5s, height 0.5s, left 0.5s,
+									                 box-shadow 0.5s;
+									    transition-delay: 0s, 1s, 0s, 0.5s;
+									}
+									/* 鼠标经过时改变线条的样式 */
+									.container a:hover::before {
+									    width: 60%;
+									    height: 100%;
+									    left: -2px;
+									    box-shadow: 0 0 0 #0f0,
+									                0 0 0 #0f0;
+									}
+									/* 通过伪元素::after实现按钮右边的线 */
+									.container a::after {
+									    content: "";
+									    position: absolute;
+									    right: -20px;
+									    top: 50%;
+									    transform: translateY(-50%);
+									    background: #0f0;
+									    width: 20px;
+									    height: 2px;
+									    box-shadow: -5px -8px 0 #0f0,
+									                -5px 8px 0 #0f0;
+									    transition: width 0.5s, height 0.5s, right 0.5s,
+									                 box-shadow 0.5s;
+									    transition-delay: 0s, 1s, 0s, 0.5s;
+									}
+									/* 鼠标经过时改变线条的样式 */
+									.container a:hover::after {
+									    width: 60%;
+									    height: 100%;
+									    right: -2px;
+									    box-shadow: 0 0 0 #0f0,
+									                0 0 0 #0f0;
+									}
+		</style>
+	</head>
+	<body>
+		<!-- 背景图 -->
+		<div class="bjimg"></div>
+
+		<!--  导航栏 -->
+		<div class="tou">
+			<sapn class="logo">原神辅助专区</sapn>
+			<ul class="biao">
+				<li>
+					<a href="#">
+						<a href="#"></a>
+				</li>
+				<li>
+					<a href="#"></a>
+				</li>
+				<li>
+					<a href="#"></a>
+				</li>
+				<li>
+					<a href="#"></a>
+				</li>
+				<li>
+					<a href="#"></a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			window.addEventListener('scroll',function(){
+															            let tou = document.querySelector('.tou');
+															            
+															           
+															           /*  tou.classList.toggle("bian",window.scrollY>0); */
+															           if(window.scrollY>0)
+															            {
+															                tou.classList.add("bian");
+															            }else{
+															                tou.classList.remove("bian");
+															            }
+															        })
+		</script>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<center>
+			<p style="font-size: xxx-large;">
+				<b>1.XXXXXX辅助</b>
+			</p>
+			<br>
+			<iframe src="//player.bilibili.com/player.html?aid=476704719&bvid=BV1KK411B7ps&cid=934262163&page=1"
+					width="100%"
+					height="450"
+					scrolling="no"
+					border="0"
+					frameborder="no"
+					framespacing="0"
+					allowfullscreen="true"> </iframe>
+			<p style="font-size: xx-large;color: red;">特点XXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
+				<br>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxx</p>
+			<div class="container">
+				<!-- 按钮 -->
+				<a href=""
+				   style="--x:0">
+					<span>点击购买</span>
+				</a>
+			</div>
+
+
+		</center>
+
+
+		</div>
+	</body>
+</html>
