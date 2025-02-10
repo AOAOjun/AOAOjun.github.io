@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             background-color: #f2acac;
-            overflow-x: auto; /*  确保 body 允许水平滚动 */
+            overflow-x: auto; /* 确保 body 允许水平滚动 */
         }
 
         input#open {
@@ -65,7 +65,7 @@
         .open {
             position: absolute;
             width: 300px; /* 桌面端卡片宽度保持不变 */
-            height: 300px;
+            height: 300px; /* 桌面端卡片高度保持不变 */
             left: 0;
             top: 0;
             background-color: transparent;
@@ -86,7 +86,7 @@
             left: 0;
             background-image: url(love.gif); /* 修改路径 */
             background-size: cover;
-            transform: rotateY(155deg) translateX(16px);
+            transform: rotateY(155deg) translateX(16px); /* translateX: 16px;  保持不变 */
         }
 
         .note {
@@ -94,8 +94,8 @@
             width: 200px;
             height: 150px;
             background-color: #fff0f3;
-            top: 85px;
-            left: 50px;
+            top: 85px; /* 桌面端 note 的 top 值保持不变 */
+            left: 50px; /* 桌面端 note 的 left 值保持不变 */
             color: #333;
             font: 900 35px '';
             display: flex;
@@ -107,19 +107,19 @@
 
         img {
             position: absolute;
-            width: 90px;
-            left: 50%;
+            width: 90px; /* 桌面端 img 的 width 值保持不变 */
+            left: 50%; /* 桌面端 img 的 left 值保持不变 */
             transform: translateX(-50%);
             z-index: 2;
-            top: 25px;
+            top: 25px; /* 桌面端 img 的 top 值保持不变 */
         }
 
         .text-one {
             position: absolute;
             color: #333;
-            font-size: 15px;
-            top: 30px;
-            width: 300px; /* 桌面端文本宽度保持不变 */
+            font-size: 15px; /* 桌面端 text-one 的 font-size 值保持不变 */
+            top: 30px; /* 桌面端 text-one 的 top 值保持不变 */
+            width: 300px; /* 桌面端 text-one 的 width 值保持不变 */
             text-align: center;
             color: #ff9999;
             font-family: 'Sacramento';
@@ -127,15 +127,15 @@
 
         .text-one:after {
             content: "";
-            top: 80px;
+            top: 80px; /* 桌面端 text-one:after 的 top 值保持不变 */
         }
 
         .right-align {
-            text-align: right;
+            text-align: right; /* 桌面端 right-align 样式保持不变 */
         }
 
         .left-align {
-            text-align: left;
+            text-align: left; /* 桌面端 left-align 样式保持不变 */
         }
 
         /* Media Query for Mobile Devices (Screens less than 768px wide) */
@@ -145,14 +145,14 @@
             .card-inside,
             .open,
             .text-one {
-                width: 600px; /*  手机端固定宽度为 600px，超出屏幕宽度，实现水平滚动 */
+                width: 600px; /* 手机端固定宽度为 600px，超出屏幕宽度，实现水平滚动 */
                 height: auto; /* 高度自适应内容 */
+                max-height: none; /* 移除 max-height 限制 */
             }
-             /*body 也要设置 overflow-x: auto;  确保body 允许水平滚动,  这里移动到 body 样式中统一设置了 */
 
 
             .card {
-                max-width: none; /*  移除 max-width 限制，允许宽度超出 */
+                max-width: none; /* 移除 max-width 限制，允许宽度超出 */
                 height: auto;
                 max-height: none; /* 移除 max-height 限制 */
             }
@@ -166,39 +166,39 @@
 
 
             .card-front:before {
-                width: 560px; /*  根据新的卡片宽度调整 before 元素的宽度 */
-                height: 280px; /* 高度保持不变 */
-                top: 10px; /* 顶部位置保持不变 */
-                left: 10px; /* 左侧位置保持不变 */
+                width: 560px; /* 根据新的卡片宽度调整 before 元素的宽度 */
+                height: 280px;
+                top: 10px;
+                left: 10px;
             }
 
             #open:checked~.card-front:before {
-                width: 660px; /*  根据新的卡片宽度调整 open 状态下 before 元素的宽度 */
-                height: 300px; /* 高度保持不变 */
-                transform: rotateY(155deg) translateX(16px); /*  translateX 值可以根据需要调整 */
+                width: 660px; /* 根据新的卡片宽度调整 open 状态下 before 元素的宽度 */
+                height: 300px;
+                transform: rotateY(155deg) translateX(16px); /* translateX: 16px; 保持不变 */
             }
 
             .note {
-                width: 400px; /*  根据新的卡片宽度调整 note 宽度 */
-                height: 150px; /* 高度保持不变 */
-                top: 85px; /* 顶部位置保持不变 */
-                left: 100px; /* 左侧位置根据新的卡片宽度调整，居中效果可能需要调整 left 值 */
-                font-size:  35px; /* 字体大小保持不变 */
+                width: 400px; /* 根据新的卡片宽度调整 note 宽度 */
+                height: 150px;
+                top: 70px; /* 修改后的 top 值： 70px， 比之前更靠上一些 */
+                left: 100px;
+                font-size:  35px;
             }
 
             img {
-                width: 90px; /* 图片宽度保持不变 */
-                top: 25px; /* 顶部位置保持不变 */
+                width: 90px;
+                top: 25px;
             }
 
             .text-one {
-                font-size: 15px; /* 字体大小保持不变 */
-                top: 30px; /* 顶部位置保持不变 */
-                width: 600px; /* 文本宽度与卡片宽度一致 */
+                font-size: 15px;
+                top: 30px;
+                width: 600px;
             }
 
             .text-one:after {
-                top: 80px; /* 位置保持不变 */
+                top: 80px;
             }
         }
     </style>
