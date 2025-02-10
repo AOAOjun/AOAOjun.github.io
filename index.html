@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 导入字体 -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Sacramento" rel="stylesheet">
     <title>妹崽！</title>
     <style>
@@ -15,6 +14,7 @@
             justify-content: center;
             align-items: center;
             background-color: #f2acac;
+            overflow-x: auto; /*  确保 body 允许水平滚动 */
         }
 
         input#open {
@@ -23,7 +23,7 @@
 
         .card {
             position: relative;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
             transform-style: preserve-3d;
             transform: perspective(2500px);
@@ -33,12 +33,12 @@
         .card-front {
             position: relative;
             background-color: #fff0f3;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
             transform-origin: left;
             box-shadow: 30px 0 50px rgba(0, 0, 0, 0.3);
             transition: .6s;
-            z-index: 2; /* 添加层级 */
+            z-index: 2;
         }
 
         .card-front:before {
@@ -54,9 +54,9 @@
         .card-inside {
             position: absolute;
             background-color: #fff0f3;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
-            z-index: 1; /* 添加层级 */
+            z-index: 1;
             left: 0;
             top: 0;
             background-color: #f5f5f5;
@@ -64,7 +64,7 @@
 
         .open {
             position: absolute;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
             left: 0;
             top: 0;
@@ -119,7 +119,7 @@
             color: #333;
             font-size: 15px;
             top: 30px;
-            width: 300px;
+            width: 300px; /* 桌面端文本宽度保持不变 */
             text-align: center;
             color: #ff9999;
             font-family: 'Sacramento';
@@ -137,16 +137,79 @@
         .left-align {
             text-align: left;
         }
+
+        /* Media Query for Mobile Devices (Screens less than 768px wide) */
+        @media screen and (max-width: 768px) {
+            .card,
+            .card-front,
+            .card-inside,
+            .open,
+            .text-one {
+                width: 600px; /*  手机端固定宽度为 600px，超出屏幕宽度，实现水平滚动 */
+                height: auto; /* 高度自适应内容 */
+            }
+             /*body 也要设置 overflow-x: auto;  确保body 允许水平滚动,  这里移动到 body 样式中统一设置了 */
+
+
+            .card {
+                max-width: none; /*  移除 max-width 限制，允许宽度超出 */
+                height: auto;
+                max-height: none; /* 移除 max-height 限制 */
+            }
+
+            .card-front,
+            .card-inside,
+            .open {
+                max-width: none; /* 移除 max-width 限制 */
+                max-height: none; /* 移除 max-height 限制 */
+            }
+
+
+            .card-front:before {
+                width: 560px; /*  根据新的卡片宽度调整 before 元素的宽度 */
+                height: 280px; /* 高度保持不变 */
+                top: 10px; /* 顶部位置保持不变 */
+                left: 10px; /* 左侧位置保持不变 */
+            }
+
+            #open:checked~.card-front:before {
+                width: 660px; /*  根据新的卡片宽度调整 open 状态下 before 元素的宽度 */
+                height: 300px; /* 高度保持不变 */
+                transform: rotateY(155deg) translateX(16px); /*  translateX 值可以根据需要调整 */
+            }
+
+            .note {
+                width: 400px; /*  根据新的卡片宽度调整 note 宽度 */
+                height: 150px; /* 高度保持不变 */
+                top: 85px; /* 顶部位置保持不变 */
+                left: 100px; /* 左侧位置根据新的卡片宽度调整，居中效果可能需要调整 left 值 */
+                font-size:  35px; /* 字体大小保持不变 */
+            }
+
+            img {
+                width: 90px; /* 图片宽度保持不变 */
+                top: 25px; /* 顶部位置保持不变 */
+            }
+
+            .text-one {
+                font-size: 15px; /* 字体大小保持不变 */
+                top: 30px; /* 顶部位置保持不变 */
+                width: 600px; /* 文本宽度与卡片宽度一致 */
+            }
+
+            .text-one:after {
+                top: 80px; /* 位置保持不变 */
+            }
+        }
     </style>
 </head>
-
 
 <body>
     <div class="card">
         <input id="open" type="checkbox">
         <label class="open" for="open"></label>
         <div class="card-front">
-            <img src="love.png" alt="" class="love"> <!-- 修改路径 -->
+            <img src="love.png" alt="" class="love">
             <div class="note">
                 Open it!<br>
                 💗💗💗
@@ -160,11 +223,12 @@
                 </div>
                 <h2>我喜欢你！</h2>
                 <div class="right-align">
-                    <h2>——刘子豪</h2> <!-- 修复多余的 > -->
+                    <h2>——刘子豪</h2>
                 </div>
             </div>
         </div>
     </div>
+    <audio src="https://lf9-music-east.douyinstatic.com/obj/ies-music-hj/7463865194842770236.mp3" controls></audio>
 </body>
 
 </html>
