@@ -86,7 +86,7 @@
             left: 0;
             background-image: url(love.gif); /* 修改路径 */
             background-size: cover;
-            transform: rotateY(155deg) translateX(16px); /* translateX: 16px;  保持不变 */
+            transform: rotateY(155deg) translateX(calc(90vw * 0.04)); /* 减小 translateX 值 (新修改) */
         }
 
         .note {
@@ -140,67 +140,63 @@
 
         /* Media Query for Mobile Devices (Screens less than 768px wide) */
         @media screen and (max-width: 768px) {
-            .card,
+            .card {
+                /* width: 600px;  移除固定宽度 */
+                width: 90vw; /*  改回响应式宽度 90vw  */
+                height: auto;
+                max-width: 300px; /* 恢复 max-width 限制 */
+                left: 0; /*  添加 left: 0; (新修改) */
+                right: 0; /*  添加 right: 0; (新修改) */
+                margin-left: auto; /*  添加 margin-left: auto; (新修改) */
+                margin-right: auto; /*  添加 margin-right: auto; (新修改) */
+            }
+
             .card-front,
             .card-inside,
             .open,
             .text-one {
                 /* width: 600px;  移除固定宽度 */
-                width: 90vw; /*  改回响应式宽度 90vw (或尝试 100vw) (新修改) */
-                height: auto; /* 高度自适应 */
-                max-height: none;
-            }
-
-
-            .card {
-                max-width: 300px; /*  恢复 max-width 限制为 300px (与桌面端一致) */
-                height: 90vw; /* 手机端高度固定为视口宽度的 90% (与上面保持一致) */
-                max-height: 300px; /* 恢复 max-height 限制为 300px (与桌面端一致) */
-            }
-
-            .card-front,
-            .card-inside,
-            .open {
-                max-width: 300px; /*  恢复 max-width 限制为 300px (与桌面端一致) */
-                height: 90vw; /* 手机端高度固定为视口宽度的 90% (与上面保持一致) */
-                max-height: 300px; /* 恢复 max-height 限制为 300px (与桌面端一致) */
+                width: 90vw; /*  改回响应式宽度 90vw */
+                height: auto;
+                max-width: 300px; /* 恢复 max-width 限制 */
+                max-height: 300px; /* 恢复 max-height 限制 */
             }
 
 
             .card-front:before {
-                width: calc(90vw * 0.93); /*  before 宽度也改为基于 90vw 计算 (新修改) */
-                height: calc(90vw * 0.93); /*  before 高度也改为基于 90vw 计算 (新修改) */
-                top: calc(90vw * 0.033); /*  before top 也改为基于 90vw 计算 (新修改) */
-                left: calc(90vw * 0.033); /*  before left 也改为基于 90vw 计算 (新修改) */
+                width: calc(90vw * 0.93);
+                height: calc(90vw * 0.93);
+                top: calc(90vw * 0.033);
+                left: calc(90vw * 0.033);
             }
 
             #open:checked~.card-front:before {
-                width: calc(90vw * 1.1); /* open 状态下 before 宽度也改为基于 90vw 计算 (新修改) */
+                width: calc(90vw * 1.05); /* 稍微减小 width (新修改) */
                 height: 90vw;
-                transform: rotateY(155deg) translateX(calc(90vw * 0.053)); /*  translateX 也改为基于 90vw 计算 (新修改) */
+                transform: rotateY(155deg) translateX(calc(90vw * 0.04)); /*  进一步减小 translateX 值 (新修改) */
             }
 
             .note {
-                width: calc(90vw * 0.66); /* note 宽度也改为基于 90vw 计算 (新修改) */
-                height: calc(90vw * 0.5); /* note 高度也改为基于 90vw 计算 (新修改) */
-                top: calc(90vw * 0.25); /*  top 值保持比例计算  (新修改) */
-                left: calc(90vw * 0.166); /* left 值也改为基于 90vw 计算 (新修改) */
-                font-size:  calc(90vw * 0.09); /* 字体大小也改为基于 90vw 计算 (新修改) */
+                width: calc(90vw * 0.66);
+                height: calc(90vw * 0.5);
+                top: calc(90vw * 0.25);
+                left: calc(90vw * 0.15); /*  稍微减小 left 值 (新修改) */
+                font-size:  calc(90vw * 0.09);
             }
 
             img {
-                width: calc(90vw * 0.3); /* img 宽度也改为基于 90vw 计算 (新修改) */
-                top: calc(90vw * 0.083); /* top 值也改为基于 90vw 计算 (新修改) */
+                width: calc(90vw * 0.3);
+                top: calc(90vw * 0.083);
             }
 
             .text-one {
-                font-size: calc(90vw * 0.04); /* text-one 字体大小也改为基于 90vw 计算 (新修改) */
-                top: calc(90vw * 0.1); /* top 值也改为基于 90vw 计算 (新修改) */
-                width: 90vw; /* text-one 宽度也改为 90vw (新修改) */
+                font-size: calc(90vw * 0.04);
+                top: calc(90vw * 0.1);
+                width: 90vw;
             }
 
             .text-one:after {
-                top: calc(90vw * 0.266); /* top 值也改为基于 90vw 计算 (新修改) */
+                top: calc(90vw * 0.266);
             }
         }
     </style>
