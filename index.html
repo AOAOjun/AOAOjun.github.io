@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 导入字体 -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Sacramento" rel="stylesheet">
     <title>妹崽！</title>
     <style>
@@ -23,7 +22,7 @@
 
         .card {
             position: relative;
-            width: 300px;
+            width: 300px; /* Default card width for larger screens */
             height: 300px;
             transform-style: preserve-3d;
             transform: perspective(2500px);
@@ -33,12 +32,12 @@
         .card-front {
             position: relative;
             background-color: #fff0f3;
-            width: 300px;
+            width: 300px; /* Default card width for larger screens */
             height: 300px;
             transform-origin: left;
             box-shadow: 30px 0 50px rgba(0, 0, 0, 0.3);
             transition: .6s;
-            z-index: 2; /* 添加层级 */
+            z-index: 2;
         }
 
         .card-front:before {
@@ -54,9 +53,9 @@
         .card-inside {
             position: absolute;
             background-color: #fff0f3;
-            width: 300px;
+            width: 300px; /* Default card width for larger screens */
             height: 300px;
-            z-index: 1; /* 添加层级 */
+            z-index: 1;
             left: 0;
             top: 0;
             background-color: #f5f5f5;
@@ -64,7 +63,7 @@
 
         .open {
             position: absolute;
-            width: 300px;
+            width: 300px; /* Default card width for larger screens */
             height: 300px;
             left: 0;
             top: 0;
@@ -137,6 +136,68 @@
         .left-align {
             text-align: left;
         }
+
+        /* Media Query for Mobile Devices (Screens less than 768px wide) */
+        @media screen and (max-width: 768px) {
+            .card,
+            .card-front,
+            .card-inside,
+            .open,
+            .text-one {
+                width: 90vw; /* Make card width responsive to viewport width */
+                height: auto; /* Adjust height automatically based on content */
+            }
+
+            .card {
+                max-width: 300px; /* Still keep a max width similar to original for larger mobile screens */
+                height: 90vw; /* Maintain aspect ratio */
+                max-height: 300px;
+            }
+
+            .card-front,
+            .card-inside,
+            .open {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
+
+            .card-front:before {
+                width: calc(90vw * 0.93); /* Scale before element width proportionally */
+                height: calc(90vw * 0.93); /* Scale before element height proportionally */
+                top: calc(90vw * 0.033); /* Scale top position proportionally */
+                left: calc(90vw * 0.033); /* Scale left position proportionally */
+            }
+
+            #open:checked~.card-front:before {
+                width: calc(90vw * 1.1); /* Scale open before element width proportionally */
+                height: 90vw; /* Keep height proportional to viewport width */
+                transform: rotateY(155deg) translateX(calc(90vw * 0.053)); /* Scale translateX proportionally */
+            }
+
+            .note {
+                width: calc(90vw * 0.66); /* Scale note width proportionally */
+                height: calc(90vw * 0.5); /* Scale note height proportionally */
+                top: calc(90vw * 0.283); /* Scale note top position proportionally */
+                left: calc(90vw * 0.166); /* Scale note left position proportionally */
+                font-size: calc(90vw * 0.09); /* Scale font size proportionally */
+            }
+
+            img {
+                width: calc(90vw * 0.3); /* Scale image width proportionally */
+                top: calc(90vw * 0.083); /* Scale image top position proportionally */
+            }
+
+            .text-one {
+                font-size: calc(90vw * 0.04); /* Scale text-one font size proportionally */
+                top: calc(90vw * 0.1); /* Scale text-one top position proportionally */
+                width: 90vw; /* Ensure text-one width is responsive */
+            }
+
+            .text-one:after {
+                top: calc(90vw * 0.266); /* Scale text-one:after top position proportionally */
+            }
+        }
     </style>
 </head>
 
@@ -145,7 +206,7 @@
         <input id="open" type="checkbox">
         <label class="open" for="open"></label>
         <div class="card-front">
-            <img src="love.png" alt="" class="love"> <!-- 修改路径 -->
+            <img src="love.png" alt="" class="love">
             <div class="note">
                 Open it!<br>
                 💗💗💗
@@ -159,7 +220,7 @@
                 </div>
                 <h2>我喜欢你！</h2>
                 <div class="right-align">
-                    <h2>——刘子豪</h2> <!-- 修复多余的 > -->
+                    <h2>——刘子豪</h2>
                 </div>
             </div>
         </div>
