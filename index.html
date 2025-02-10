@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             background-color: #f2acac;
-            overflow-x: auto; /* 确保 body 允许水平滚动 */
+            /* overflow-x: auto;  移除或注释掉：不再需要水平滚动 */
         }
 
         input#open {
@@ -23,7 +23,7 @@
 
         .card {
             position: relative;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
             transform-style: preserve-3d;
             transform: perspective(2500px);
@@ -33,7 +33,7 @@
         .card-front {
             position: relative;
             background-color: #fff0f3;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
             transform-origin: left;
             box-shadow: 30px 0 50px rgba(0, 0, 0, 0.3);
@@ -54,7 +54,7 @@
         .card-inside {
             position: absolute;
             background-color: #fff0f3;
-            width: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
             height: 300px;
             z-index: 1;
             left: 0;
@@ -64,8 +64,8 @@
 
         .open {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 300px; /* 桌面端卡片宽度保持不变 */
+            height: 300px; /* 桌面端卡片高度保持不变 */
             left: 0;
             top: 0;
             background-color: transparent;
@@ -86,7 +86,7 @@
             left: 0;
             background-image: url(love.gif); /* 修改路径 */
             background-size: cover;
-            transform: rotateY(155deg) translateX(16px);
+            transform: rotateY(155deg) translateX(16px); /* translateX: 16px;  保持不变 */
         }
 
         .note {
@@ -145,62 +145,62 @@
             .card-inside,
             .open,
             .text-one {
-                width: 600px; /* 手机端固定宽度为 600px，超出屏幕宽度，实现水平滚动 */
-                height: 90vw; /* 手机端高度固定为视口宽度的 90%  (新修改) */
-                /* max-height: none;  移除 max-height: none; (新修改) */
+                /* width: 600px;  移除固定宽度 */
+                width: 90vw; /*  改回响应式宽度 90vw (或尝试 100vw) (新修改) */
+                height: auto; /* 高度自适应 */
+                max-height: none;
             }
 
 
             .card {
-                max-width: none; /* 移除 max-width 限制，允许宽度超出 */
-                height: 90vw; /* 手机端高度固定为视口宽度的 90% (与上面保持一致) (新修改) */
-                /* max-height: none;  移除 max-height: none; (新修改) */
+                max-width: 300px; /*  恢复 max-width 限制为 300px (与桌面端一致) */
+                height: 90vw; /* 手机端高度固定为视口宽度的 90% (与上面保持一致) */
+                max-height: 300px; /* 恢复 max-height 限制为 300px (与桌面端一致) */
             }
 
             .card-front,
             .card-inside,
             .open {
-                max-width: none; /* 移除 max-width 限制 */
-                 height: 90vw; /* 手机端高度固定为视口宽度的 90% (与上面保持一致) (新修改) */
-                /* max-height: none;  移除 max-height: none; (新修改) */
+                max-width: 300px; /*  恢复 max-width 限制为 300px (与桌面端一致) */
+                height: 90vw; /* 手机端高度固定为视口宽度的 90% (与上面保持一致) */
+                max-height: 300px; /* 恢复 max-height 限制为 300px (与桌面端一致) */
             }
 
 
             .card-front:before {
-                width: 560px;
-                height: 280px;
-                top: 10px;
-                left: 10px;
+                width: calc(90vw * 0.93); /*  before 宽度也改为基于 90vw 计算 (新修改) */
+                height: calc(90vw * 0.93); /*  before 高度也改为基于 90vw 计算 (新修改) */
+                top: calc(90vw * 0.033); /*  before top 也改为基于 90vw 计算 (新修改) */
+                left: calc(90vw * 0.033); /*  before left 也改为基于 90vw 计算 (新修改) */
             }
 
             #open:checked~.card-front:before {
-                width: 660px;
-                height: 300px;
-                transform: rotateY(155deg) translateX(16px);
+                width: calc(90vw * 1.1); /* open 状态下 before 宽度也改为基于 90vw 计算 (新修改) */
+                height: 90vw;
+                transform: rotateY(155deg) translateX(calc(90vw * 0.053)); /*  translateX 也改为基于 90vw 计算 (新修改) */
             }
 
             .note {
-                width: 400px;
-                height: 150px;
-                /* top: 70px;  之前的固定 top 值 (可能偏下) */
-                top: calc(90vw * 0.25); /* 新的 top 值： 基于视口宽度比例计算，更靠上 (新修改) */
-                left: 100px;
-                font-size:  35px;
+                width: calc(90vw * 0.66); /* note 宽度也改为基于 90vw 计算 (新修改) */
+                height: calc(90vw * 0.5); /* note 高度也改为基于 90vw 计算 (新修改) */
+                top: calc(90vw * 0.25); /*  top 值保持比例计算  (新修改) */
+                left: calc(90vw * 0.166); /* left 值也改为基于 90vw 计算 (新修改) */
+                font-size:  calc(90vw * 0.09); /* 字体大小也改为基于 90vw 计算 (新修改) */
             }
 
             img {
-                width: 90px;
-                top: 25px;
+                width: calc(90vw * 0.3); /* img 宽度也改为基于 90vw 计算 (新修改) */
+                top: calc(90vw * 0.083); /* top 值也改为基于 90vw 计算 (新修改) */
             }
 
             .text-one {
-                font-size: 15px;
-                top: 30px;
-                width: 600px;
+                font-size: calc(90vw * 0.04); /* text-one 字体大小也改为基于 90vw 计算 (新修改) */
+                top: calc(90vw * 0.1); /* top 值也改为基于 90vw 计算 (新修改) */
+                width: 90vw; /* text-one 宽度也改为 90vw (新修改) */
             }
 
             .text-one:after {
-                top: 80px;
+                top: calc(90vw * 0.266); /* top 值也改为基于 90vw 计算 (新修改) */
             }
         }
     </style>
