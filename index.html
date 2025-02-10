@@ -1,12 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 导入字体 -->
+
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Sacramento" rel="stylesheet">
+
     <title>妹崽！</title>
+
     <style>
         body {
             height: 100vh;
@@ -14,218 +25,309 @@
             justify-content: center;
             align-items: center;
             background-color: #f2acac;
-            /* overflow-x: auto;  移除或注释掉：不再需要水平滚动 */
+            width: 800px; /* 设置 body 宽度为 800px */
+            margin-left: auto; /* 水平居中 */
+            margin-right: auto; /* 水平居中 */
         }
+
+
 
         input#open {
-            display: none;
+
+        display: none;
+
         }
+
+
 
         .card {
-            position: relative;
-            width: 300px; /* 桌面端卡片宽度保持不变 */
-            height: 300px;
-            transform-style: preserve-3d;
-            transform: perspective(2500px);
-            transition: .3s;
+
+        position: relative;
+
+        width: 300px;
+
+        height: 300px;
+
+        transform-style: preserve-3d;
+
+        transform: perspective(2500px);
+
+        transition: .3s;
+
         }
+
+
 
         .card-front {
-            position: relative;
-            background-color: #fff0f3;
-            width: 300px; /* 桌面端卡片宽度保持不变 */
-            height: 300px;
-            transform-origin: left;
-            box-shadow: 30px 0 50px rgba(0, 0, 0, 0.3);
-            transition: .6s;
-            z-index: 2;
+
+        position: relative;
+
+        background-color: #fff0f3;
+
+        width: 300px;
+
+        height: 300px;
+
+        transform-origin: left;
+
+        box-shadow: 30px 0 50px rgba(0, 0, 0, 0.3);
+
+        transition: .6s;
+
+        z-index: 2; /* 添加层级 */
+
         }
+
+
 
         .card-front:before {
-            content: "";
-            position: absolute;
-            width: 280px;
-            height: 280px;
-            background-color: #f38e8e;
-            top: 10px;
-            left: 10px;
+
+        content: "";
+
+        position: absolute;
+
+        width: 280px;
+
+        height: 280px;
+
+        background-color: #f38e8e;
+
+        top: 10px;
+
+        left: 10px;
+
         }
+
+
 
         .card-inside {
-            position: absolute;
-            background-color: #fff0f3;
-            width: 300px; /* 桌面端卡片宽度保持不变 */
-            height: 300px;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            background-color: #f5f5f5;
+
+        position: absolute;
+
+        background-color: #fff0f3;
+
+        width: 300px;
+
+        height: 300px;
+
+        z-index: 1; /* 添加层级 */
+
+        left: 0;
+
+        top: 0;
+
+        background-color: #f5f5f5;
+
         }
+
+
 
         .open {
-            position: absolute;
-            width: 300px; /* 桌面端卡片宽度保持不变 */
-            height: 300px; /* 桌面端卡片高度保持不变 */
-            left: 0;
-            top: 0;
-            background-color: transparent;
-            z-index: 6;
-            cursor: pointer;
+
+        position: absolute;
+
+        width: 300px;
+
+        height: 300px;
+
+        left: 0;
+
+        top: 0;
+
+        background-color: transparent;
+
+        z-index: 6;
+
+        cursor: pointer;
+
         }
+
+
 
         #open:checked~.card-front {
-            transform: rotateY(-145deg);
+
+        transform: rotateY(-145deg);
+
         }
+
+
 
         #open:checked~.card-front:before {
-            z-index: 5;
-            background-color: #fff0f3;
-            width: 330px;
-            height: 300px;
-            top: 0;
-            left: 0;
-            background-image: url(love.gif); /* 修改路径 */
-            background-size: cover;
-            transform: rotateY(155deg) translateX(calc(90vw * 0.04)); /* 减小 translateX 值 (新修改) */
+
+        z-index: 5;
+
+        background-color: #fff0f3;
+
+        width: 330px;
+
+        height: 300px;
+
+        top: 0;
+
+        left: 0;
+
+        background-image: url(love.gif); /* 修改路径 */
+
+        background-size: cover;
+
+        transform: rotateY(155deg) translateX(16px);
+
         }
+
+
 
         .note {
-            position: relative;
-            width: 200px;
-            height: 150px;
-            background-color: #fff0f3;
-            top: 85px; /* 桌面端 note 的 top 值保持不变 */
-            left: 50px; /* 桌面端 note 的 left 值保持不变 */
-            color: #333;
-            font: 900 35px '';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+
+        position: relative;
+
+        width: 200px;
+
+        height: 150px;
+
+        background-color: #fff0f3;
+
+        top: 85px;
+
+        left: 50px;
+
+        color: #333;
+
+        font: 900 35px '';
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+
         }
+
+
 
         img {
-            position: absolute;
-            width: 90px; /* 桌面端 img 的 width 值保持不变 */
-            left: 50%; /* 桌面端 img 的 left 值保持不变 */
-            transform: translateX(-50%);
-            z-index: 2;
-            top: 25px; /* 桌面端 img 的 top 值保持不变 */
+
+        position: absolute;
+
+        width: 90px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        z-index: 2;
+
+        top: 25px;
+
         }
+
+
 
         .text-one {
-            position: absolute;
-            color: #333;
-            font-size: 15px; /* 桌面端 text-one 的 font-size 值保持不变 */
-            top: 30px; /* 桌面端 text-one 的 top 值保持不变 */
-            width: 300px; /* 桌面端 text-one 的 width 值保持不变 */
-            text-align: center;
-            color: #ff9999;
-            font-family: 'Sacramento';
+
+        position: absolute;
+
+        color: #333;
+
+        font-size: 15px;
+
+        top: 30px;
+
+        width: 300px;
+
+        text-align: center;
+
+        color: #ff9999;
+
+        font-family: 'Sacramento';
+
         }
+
+
 
         .text-one:after {
-            content: "";
-            top: 80px; /* 桌面端 text-one:after 的 top 值保持不变 */
+
+        content: "";
+
+        top: 80px;
+
         }
+
+
 
         .right-align {
-            text-align: right; /* 桌面端 right-align 样式保持不变 */
+
+        text-align: right;
+
         }
+
+
 
         .left-align {
-            text-align: left; /* 桌面端 left-align 样式保持不变 */
-        }
 
-        /* Media Query for Mobile Devices (Screens less than 768px wide) */
-        @media screen and (max-width: 768px) {
-            .card {
-                /* width: 600px;  移除固定宽度 */
-                width: 90vw; /*  改回响应式宽度 90vw  */
-                height: auto;
-                max-width: 300px; /* 恢复 max-width 限制 */
-                left: 0; /*  添加 left: 0; (新修改) */
-                right: 0; /*  添加 right: 0; (新修改) */
-                margin-left: auto; /*  添加 margin-left: auto; (新修改) */
-                margin-right: auto; /*  添加 margin-right: auto; (新修改) */
-            }
+        text-align: left;
 
-            .card-front,
-            .card-inside,
-            .open,
-            .text-one {
-                /* width: 600px;  移除固定宽度 */
-                width: 90vw; /*  改回响应式宽度 90vw */
-                height: auto;
-                max-width: 300px; /* 恢复 max-width 限制 */
-                max-height: 300px; /* 恢复 max-height 限制 */
-            }
-
-
-            .card-front:before {
-                width: calc(90vw * 0.93);
-                height: calc(90vw * 0.93);
-                top: calc(90vw * 0.033);
-                left: calc(90vw * 0.033);
-            }
-
-            #open:checked~.card-front:before {
-                width: calc(90vw * 1.05); /* 稍微减小 width (新修改) */
-                height: 90vw;
-                transform: rotateY(155deg) translateX(calc(90vw * 0.04)); /*  进一步减小 translateX 值 (新修改) */
-            }
-
-            .note {
-                width: calc(90vw * 0.66);
-                height: calc(90vw * 0.5);
-                top: calc(90vw * 0.25);
-                left: calc(90vw * 0.15); /*  稍微减小 left 值 (新修改) */
-                font-size:  calc(90vw * 0.09);
-            }
-
-            img {
-                width: calc(90vw * 0.3);
-                top: calc(90vw * 0.083);
-            }
-
-            .text-one {
-                font-size: calc(90vw * 0.04);
-                top: calc(90vw * 0.1);
-                width: 90vw;
-            }
-
-            .text-one:after {
-                top: calc(90vw * 0.266);
-            }
         }
     </style>
+
 </head>
 
+
+
 <body>
+
     <div class="card">
+
         <input id="open" type="checkbox">
+
         <label class="open" for="open"></label>
+
         <div class="card-front">
+
             <img src="love.png" alt="" class="love">
+            <!-- 修改路径 -->
+
             <div class="note">
-                Open it!<br>
-                💗💗💗
+
+                Open it!
+                <br> 💗💗💗
+
             </div>
+
         </div>
+
         <div class="card-inside">
+
             <div class="text-one">
+
                 <h1>💌520💌</h1>
+
                 <div class="left-align">
+
                     <h2>金紫芸同学：</h2>
+
                 </div>
-                <h2>我喜欢你！</h2>
+
+                <h2>我喜欢你！情人节快乐！</h2>
+
                 <div class="right-align">
+
                     <h2>——刘子豪</h2>
+                    <!-- 修复多余的 > -->
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </body>
+
+
 
 </html>
